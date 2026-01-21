@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="content-box">
+    <img src="/static/images/thapar_logo.webp" class="thapar-logo">
+
+    <h3 class="text-center mb-4">Student Login</h3>
+
+    <!-- Send OTP -->
+    <form id="sendOtpForm">
+        <div class="mb-3">
+            <label class="form-label">Thapar Email</label>
+            <input type="email" class="form-control" id="email" placeholder="your_rollno@thapar.edu" required>
+        </div>
+        <button type="submit" class="btn btn-danger w-100">Send OTP</button>
+    </form>
+
+    <hr>
+
+    <!-- Verify OTP -->
+    <form id="verifyOtpForm">
+        <div class="mb-3">
+            <label class="form-label">Enter OTP</label>
+            <input type="number" class="form-control" id="otp" placeholder="6-digit OTP" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Verify OTP</button>
+    </form>
+</div>
+
+<script>
+document.getElementById("sendOtpForm").onsubmit = async (e) => {
+    e.preventDefault();
+    let response = await fetch("/send_otp", {
+        method: "POST",
+        body: new URLSearchParams({ email: email.value })
+    });
+    let data = await response.json();
+    alert(data.message);
+};
+
+document.getElementById("verifyOtpForm").onsubmit = async (e) => {
+    e.preventDefault();
+    let response = await fetch("/verify_otp", {
+        method: "POST",
+        body: new URLSearchParams({ otp: otp.value })
+    });
+    let data = await response.json();
+    if (data.redirect) window.location.href = data.redirect;
+    else alert(data.message);
+};
+</script>
+
+{% endblock %}

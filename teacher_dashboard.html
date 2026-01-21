@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+
+    <link rel="stylesheet"
+     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <style>
+
+        /* Top Navbar */
+        .navbar-custom {
+            background: linear-gradient(90deg, #8e2de2, #4a00e0);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: white !important;
+            font-size: 1.5rem;
+        }
+
+        .logout-btn {
+            background: #ff4747;
+            color: white;
+            border-radius: 6px;
+            padding: 6px 15px;
+        }
+
+        /* Page Container */
+        body {
+            background: #f1f4f9;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .dashboard-card {
+            margin-top: 30px;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Table Styling */
+        table thead {
+            background: #4a00e0;
+            color: white;
+        }
+
+        table tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .download-btn {
+            background: #007bff;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .download-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- TOP NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-custom px-4">
+    <a class="navbar-brand" href="#">Teacher Dashboard</a>
+
+    <div class="ms-auto">
+        <a href="/logout" class="logout-btn text-decoration-none">Logout</a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="dashboard-card">
+
+        <h3 class="mb-4">Student Placement Records</h3>
+
+        <table class="table table-bordered table-striped align-middle">
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>Name</th>
+                    <th>Personal Email</th>
+                    <th>Contact</th>
+                    <th>Company</th>
+                    <th>City</th>
+                    <th>Stipend</th>
+                    <th>Role Offered</th>
+                    <th>Joining Date</th>
+                    <th>Status</th>
+                    <th>Offer Letter</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for s in students %}
+                <tr>
+                    <td>{{ s.roll_no }}</td>
+                    <td>{{ s.name }}</td>
+                    <td>{{ s.personal_email }}</td>
+                    <td>{{ s.contact }}</td>
+                    <td>{{ s.company }}</td>
+                    <td>{{ s.city }}</td>
+                    <td>{{ s.stipend }}</td>
+                    <td>{{ s.role_offered }}</td>
+                    <td>{{ s.joining_date }}</td>
+                    <td>{{ s.status }}</td>
+
+                    <td>
+                        {% if s.offer_filename %}
+                            <a href="/download_offer/{{ s.offer_filename }}" class="download-btn">Download</a>
+                        {% else %}
+                            <span class="text-danger">Not Uploaded</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

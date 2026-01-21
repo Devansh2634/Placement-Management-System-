@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thapar Student Placement Portal</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: url("/static/images/thapar_background.webp") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .main-box {
+            margin-top: 120px;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 45px;
+            max-width: 650px;
+            border-radius: 18px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            text-align: center;
+        }
+
+        .thapar-logo {
+            width: 110px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .btn-custom-blue {
+            background-color: #1a4aad;
+            border: none;
+            font-size: 18px;
+            padding: 10px 25px;
+        }
+
+        .btn-custom-green {
+            background-color: #0a7b42;
+            border: none;
+            font-size: 18px;
+            padding: 10px 25px;
+        }
+
+        .btn-custom-blue:hover {
+            background-color: #0f2f73;
+        }
+
+        .btn-custom-green:hover {
+            background-color: #064d2a;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container d-flex justify-content-center">
+    <div class="main-box">
+
+        <img src="/static/images/thapar_logo.webp" class="thapar-logo">
+
+        <h1>Thapar Student Placement Portal</h1>
+
+        <div class="mt-4 d-flex justify-content-center gap-3">
+            <a href="/login" class="btn btn-custom-blue text-white">
+                Student Login
+            </a>
+
+            <a href="/teacher_login_page" class="btn btn-custom-green text-white">
+                Admin Login
+            </a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
